@@ -1,13 +1,27 @@
 <!DOCTYPE html>
-{% load static %}
 <html>
-<head>
-    <title>Rango</title>
-</head>
-<body>
-    <h1>Rango says...</h1>
-    hello world! <strong>{{ boldmessage }}</strong><br />
-    <a href="/rango/about/">About</a><br />
-    <img src="{% static 'cf-banner-64.png' %}" alt = "Coaches Flow logo" />
-</body>
+    <head>
+        <title>Rango</title>
+    </head>
+
+    <body>
+        <h1>Rango says...hello world!</h1>
+
+        {% if categories %}
+            <ul>
+                {% for category in categories %}
+                <li><a href="/rango/category/{{ category.url }}">{{ category.name }}</a></li>
+
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+
+        {% for page in pages %}
+            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+        {% endfor %}
+        <br>
+      <a href="/rango/about/">About</a>
+    </body>
 </html>

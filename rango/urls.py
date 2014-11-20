@@ -17,5 +17,6 @@ from rango import views
 # http://www.tangowithdjango.com/book/chapters/setup.html  section 3.5
 urlpatterns = patterns('',
         url(r'^$', views.index, name='index'),
-        url(r'^about/', views.about, name='about')
+        url(r'^about/', views.about, name='about'),
+        url(r'^category/(?P<category_name_url>\w+)/$', views.category, name='category'),
         )
